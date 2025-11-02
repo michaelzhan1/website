@@ -1,7 +1,7 @@
 [
     {
-        "name": "michaelzhan.me",
-        "url": "https://michaelzhan.me/",
+        "name": "mzhan.dev",
+        "url": "https://mzhan.dev/",
         "imageUrl": "../assets/img/website.png",
         "description": "My personal website (the one you're on right now!). Built with Next.js and TailwindCSS."
     },
@@ -13,31 +13,31 @@
     },
     {
         "name": "bioRxiv Newsletter",
-        "url": "https://biorxiv.michaelzhan.me/",
+        "url": "https://biorxiv.mzhan.dev/",
         "imageUrl": "../assets/img/biorxiv.png",
         "description": "A weekly newsletter service that retrieves and sends users latest bioRxiv preprints based on their search. Built with Next.js and TailwindCSS, using the bioRxiv API."
     },
     {
         "name": "Book Recommender",
-        "url": "https://bookshelf.michaelzhan.me/",
+        "url": "https://bookshelf.mzhan.dev/",
         "imageUrl": "../assets/img/bookshelf.png",
         "description": "A bookshelf and recommender service with user authentication, using Google Books API. Built with Next.js, NextAuth, and Tailwind CSS."
     },
     {
         "name": "PokerChips",
-        "url": "https://pokerchips.michaelzhan.me/",
+        "url": "https://pokerchips.mzhan.dev/",
         "imageUrl": "../assets/img/pokerchip.png",
         "description": "An online poker chip tracking system, allowing users to bet and take from a pot. Built with Next.js and TailwindCSS using websockets."
     },
     {
         "name": "FairShare",
-        "url": "https://fairshare.michaelzhan.me/",
+        "url": "https://fairshare.mzhan.dev/",
         "imageUrl": "../assets/img/fairshare.png",
         "description": "A web app that tracks expenses for groups and calculates how to split bills. Built with base JavaScript and HTML/CSS on a Flask backend."
     },
     {
         "name": "Weather App",
-        "url": "https://weather.michaelzhan.me",
+        "url": "https://weather.mzhan.dev",
         "imageUrl": "../assets/img/weather.png",
         "description": "A weather app that displays the current weather for a user-chosen location. Built with Next.js and TailwindCSS, using the OpenWeatherMap API."
     }

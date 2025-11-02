@@ -1,2 +1,2 @@
 ### My personal website
-Hosted at [michaelzhan.me](michaelzhan.me).
+Hosted at [mzhan.dev](mzhan.dev).
