@@ -25,7 +25,7 @@ function loadFooter() {
             <i class="fa-brands fa-github"></i>
         </a>
         </div>
-        <p id="copyright">© 2025 Michael Zhan</p>
+        <p id="copyright">© 2026 Michael Zhan</p>
     `;
 
     footerContainer.innerHTML = footer;
