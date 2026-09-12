@@ -85,7 +85,8 @@ h4,
 h5,
 h6,
 p,
-a {
+a,
+pre {
   margin: 0;
   padding: 0;
 }

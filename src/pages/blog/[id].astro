@@ -45,7 +45,7 @@ const { Content } = await render(post);
       margin-bottom: 1rem;
       color: var(--color-text);
       font-size: 0.875rem;
-  
+
       &:hover {
         color: var(--color-text-hover);
       }
@@ -69,16 +69,17 @@ const { Content } = await render(post);
         background: #f1f1f1;
         border: 1px solid #ddd;
         border-radius: 8px;
-        padding: 1rem 1.25rem;
+        padding: 0.75rem 1.25rem;
         overflow-x: auto;
 
         code {
           counter-reset: line;
+          line-height: 1.125rem;
         }
 
         code .line {
           display: inline-block;
-          width: 100%;
+          min-width: 100%;
         }
 
         code .line::before {
@@ -95,8 +96,28 @@ const { Content } = await render(post);
         }
       }
 
-      p:has(img) {
-        align-self: center;
+      p {
+        code {
+          background: #d6d6d6;
+          color: #222;
+          border-radius: 4px;
+          padding: 0.15em 0.4em;
+          font-size: 0.9em;
+          font-family: monospace;
+        }
+
+        a {
+          color: var(--color-text);
+          text-decoration: underline;
+
+          &:hover {
+            color: var(--color-text-hover);
+          }
+        }
+
+        &:has(img) {
+          text-align: center;
+        }
       }
 
       table {
