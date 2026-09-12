@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import BlogItemTemplate from "../../components/BlogItemTemplate.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Blog" description="Michael Zhan's blog posts">
+  <section class="blog">
+    <PageTitle title="Posts" />
+    <div class="blog__content">
+      {posts.map((post) => (
+        <BlogItemTemplate
+          title={post.data.title}
+          link={`/blog/${post.id}`}
+          date={post.data.date}
+          description={post.data.description}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

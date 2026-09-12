@@ -1,57 +1,41 @@
 ---
+import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
 import PageTitle from "../components/PageTitle.astro";
+import ProjectTemplate from "../components/ProjectTemplate.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import Advent2024Project from "../components/projects/Advent2024.astro";
-import BioRxivProject from "../components/projects/BioRxiv.astro";
-import BookshelfProject from "../components/projects/Bookshelf.astro";
-import ChessProject from "../components/projects/Chess.astro";
-import FairshareProject from "../components/projects/Fairshare.astro";
-import GameOfLifeProject from "../components/projects/GameOfLife.astro";
-import MazeProject from "../components/projects/Maze.astro";
-import MinesweeperProject from "../components/projects/Minesweeper.astro";
-import MockLogSystemProject from "../components/projects/MockLogSystem.astro";
-import MonkeyInterpreterProject from "../components/projects/MonkeyInterpreter.astro";
-import OptimizationProject from "../components/projects/Optimization.astro";
-import PickleballReserveProject from "../components/projects/PickleballReserve.astro";
-import PokerChipsProject from "../components/projects/PokerChips.astro";
-import RotatingCalibrationProject from "../components/projects/RotatingCalibration.astro";
-import SortVisualizerProject from "../components/projects/SortVisualizer.astro";
-import SplitProject from "../components/projects/Split.astro";
-import StakeholderMappingProject from "../components/projects/StakeholderMapping.astro";
-import StockDataGeneratorProject from "../components/projects/StockDataGenerator.astro";
-import WeatherProject from "../components/projects/Weather.astro";
-import WebsiteProject from "../components/projects/Website.astro";
+type RenderedProject = {
+  title: string;
+  link: string;
+  Content: Awaited<ReturnType<typeof render>>["Content"];
+};
 
-const projects = [
-  WebsiteProject,
-  StockDataGeneratorProject,
-  MockLogSystemProject,
-  MonkeyInterpreterProject,
-  PickleballReserveProject,
-  StakeholderMappingProject,
-  OptimizationProject,
-  ChessProject,
-  RotatingCalibrationProject,
-  Advent2024Project,
-  SplitProject,
-  PokerChipsProject,
-  MazeProject,
-  GameOfLifeProject,
-  MinesweeperProject,
-  BookshelfProject,
-  FairshareProject,
-  BioRxivProject,
-  SortVisualizerProject,
-  WeatherProject,
-];
+const projects: CollectionEntry<'projects'>[] = await getCollection("projects"); 
+const renderedProjects: RenderedProject[] = await Promise.all(
+  projects.map(async (project) => {
+    const { Content } = await render(project);
+    return {
+      title: project.data.title,
+      link: project.data.link,
+      Content,
+    };
+  })
+);
 ---
 
 <BaseLayout title="Projects" description="Michael Zhan's projects">
   <section class="projects">
     <PageTitle title="Projects" />
     <div class="projects__content">
-      {projects.map((Project) => <Project />)}
+      {renderedProjects.map(({title, link, Content}) => (
+        <ProjectTemplate
+          title={title}
+          link={link}
+        >
+          <Content />
+        </ProjectTemplate>
+      ))}
     </div>
   </section>
 </BaseLayout>
@@ -60,6 +44,6 @@ const projects = [
   .projects__content {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 </style>

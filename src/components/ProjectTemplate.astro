@@ -11,7 +11,7 @@ const { title, link } = Astro.props;
 
 <article class="project">
   <h2 class="project__title">
-    <Link href={link} content={title} />
+    <Link href={link} content={title} newTab={true} />
   </h2>
 
   <div class="project__description">
@@ -23,7 +23,7 @@ const { title, link } = Astro.props;
   .project {
     &:not(:last-child) {
       border-bottom: 1px solid var(--color-border);
-      padding-bottom: 1.0rem;
+      padding-bottom: 1.5rem;
     }
 
     .project__title {

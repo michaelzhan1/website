@@ -1,22 +1,49 @@
+---
+import Link from "./Link.astro";
+---
+
 <header class="site-header">
   <nav class="site-header__nav" aria-label="Main navigation">
     <ul class="site-header__list">
       <li class="site-header__item">
-        <a class="site-header__link" href="/">Home</a>
+        <Link
+          className="site-header__link"
+          href="/"
+          content="Home"
+          newTab={false}
+        />
       </li>
       <li class="site-header__item">
-        <a class="site-header__link" href="/about">About</a>
+        <Link
+          className="site-header__link"
+          href="/about"
+          content="About"
+          newTab={false}
+        />
       </li>
       <li class="site-header__item">
-        <a class="site-header__link" href="/projects">Projects</a>
+        <Link
+          className="site-header__link"
+          href="/blog"
+          content="Blog"
+          newTab={false}
+        />
       </li>
       <li class="site-header__item">
-        <a
-          class="site-header__link"
+        <Link
+          className="site-header__link"
+          href="/projects"
+          content="Projects"
+          newTab={false}
+        />
+      </li>
+      <li class="site-header__item">
+        <Link
+          className="site-header__link"
           href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer">Resume</a
-        >
+          newTab={true}
+          content="Resume"
+        />
       </li>
     </ul>
   </nav>

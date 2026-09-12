@@ -6,11 +6,12 @@ interface Props {
   content: string | typeof Icon;
   className?: string;
   ariaLabel?: string;
+  newTab?: boolean;
 }
 
-const { href, content, className, ariaLabel } = Astro.props;
+const { href, content, className, ariaLabel, newTab } = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noopener noreferrer" class={className} aria-label={ariaLabel}>
+<a href={href} target={newTab ? "_blank" : undefined} rel={newTab ? "noopener noreferrer" : undefined} class={className} aria-label={ariaLabel}>
   {content}
 </a>

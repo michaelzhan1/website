@@ -15,6 +15,7 @@
   --color-footer-text: #efede7;
   --color-footer-text-hover: #bfbebb;
   --color-text: #000000;
+  --color-text-muted: #272727;
   --color-text-hover: #6b7280;
 
   /* borders */
@@ -84,7 +85,8 @@ h4,
 h5,
 h6,
 p,
-a {
+a,
+pre {
   margin: 0;
   padding: 0;
 }

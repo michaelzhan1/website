@@ -1,12 +1,12 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 
-import icon from 'astro-icon';
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mzhan.dev/',
-  integrations: [sitemap(), icon()]
+  site: "https://mzhan.dev/",
+  integrations: [sitemap(), icon()],
 });

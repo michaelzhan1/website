@@ -1,0 +1,51 @@
+---
+import { formatDate } from "../utils/common";
+import Link from "../components/Link.astro";
+
+interface Props {
+  title: string;
+  link: string;
+  date: Date;
+  description: string;
+}
+
+const { title, link, date, description } = Astro.props;
+---
+
+<article class="blog-item">
+  <h2 class="blog-item__title">
+    <Link href={link} content={title} newTab={false} />
+  </h2>
+  <p class="blog-item__date">{formatDate(date)}</p>
+  <div class="blog-item__description">
+    <p>{description}</p>
+  </div>
+</article>
+
+<style>
+  .blog-item {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 1.5rem;
+    }
+
+    .blog-item__title {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .blog-item__date {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--color-text);
+
+      &:hover {
+        color: var(--color-text-hover);
+      }
+    }
+  }
+</style>
