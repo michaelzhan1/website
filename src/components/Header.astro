@@ -57,7 +57,7 @@ import Link from "./Link.astro";
     z-index: 100;
     margin: 1.5rem auto;
     padding: 1rem;
-    width: var(--max-page-width);
+    width: min(calc(100% - 2rem), var(--max-page-width));
     background-color: var(--color-background);
     justify-content: flex-end;
 
@@ -74,11 +74,20 @@ import Link from "./Link.astro";
     }
 
     .site-header__link {
+      display: inline-block;
+      padding: 0.5rem 0.25rem;
       color: var(--color-header-link);
       text-decoration: none;
 
       &:hover {
         color: var(--color-header-link-hover);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .site-header__list {
+        gap: 0.6rem;
+        font-size: 1rem;
       }
     }
   }

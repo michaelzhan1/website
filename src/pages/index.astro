@@ -90,8 +90,9 @@ import Link from "../components/Link.astro";
         margin-top: 0.75rem;
 
         .home__image-photo {
-          width: 244px;
-          height: 244px;
+          width: min(244px, 70vw);
+          height: auto;
+          aspect-ratio: 1;
           object-fit: cover;
           border-radius: 50%;
         }

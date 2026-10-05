@@ -41,7 +41,7 @@ const { title, description } = Astro.props;
       flex: 1;
       margin: auto;
       padding-bottom: 1rem;
-      width: var(--max-page-width);
+      width: min(calc(100% - 2rem), var(--max-page-width));
     }
   }
 </style>
