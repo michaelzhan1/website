@@ -13,8 +13,10 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.3",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.0",
-    "astro-icon": "^1.1.5"
+    "astro-icon": "^1.1.5",
+    "satteri": "^0.10.5"
   }
 }
