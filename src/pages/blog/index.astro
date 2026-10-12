@@ -1,18 +1,21 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageTitle from "../../components/PageTitle.astro";
-import BlogItemTemplate from "../../components/BlogItemTemplate.astro";
 import { getCollection } from "astro:content";
+import BlogItemTemplate from "../../components/BlogItemTemplate.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import Pagination from "../../components/Pagination.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ITEMS_PER_PAGE, paginateItems } from "../../utils/pagination";
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const { items: pagePosts, totalPages } = paginateItems(posts, 1, ITEMS_PER_PAGE);
 ---
 
 <BaseLayout title="Blog" description="Michael Zhan's blog posts">
   <section class="blog">
     <PageTitle title="Posts" />
     <div class="blog__content">
-      {posts.map((post) => (
+      {pagePosts.map((post) => (
         <BlogItemTemplate
           title={post.data.title}
           link={`/blog/${post.id}`}
@@ -21,6 +24,7 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
         />
       ))}
     </div>
+    <Pagination currentPage={1} {totalPages} basePath="/blog" />
   </section>
 </BaseLayout>
 

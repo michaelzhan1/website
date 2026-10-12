@@ -2,8 +2,10 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
 import PageTitle from "../components/PageTitle.astro";
+import Pagination from "../components/Pagination.astro";
 import ProjectTemplate from "../components/ProjectTemplate.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { ITEMS_PER_PAGE, paginateItems } from "../utils/pagination";
 
 type RenderedProject = {
   title: string;
@@ -22,13 +24,18 @@ const renderedProjects: RenderedProject[] = await Promise.all(
     };
   })
 );
+const { items: pageProjects, totalPages } = paginateItems(
+  renderedProjects,
+  1,
+  ITEMS_PER_PAGE,
+);
 ---
 
 <BaseLayout title="Projects" description="Michael Zhan's projects">
   <section class="projects">
     <PageTitle title="Projects" />
     <div class="projects__content">
-      {renderedProjects.map(({title, link, Content}) => (
+      {pageProjects.map(({title, link, Content}) => (
         <ProjectTemplate
           title={title}
           link={link}
@@ -37,6 +44,7 @@ const renderedProjects: RenderedProject[] = await Promise.all(
         </ProjectTemplate>
       ))}
     </div>
+    <Pagination currentPage={1} {totalPages} basePath="/projects" />
   </section>
 </BaseLayout>
 
