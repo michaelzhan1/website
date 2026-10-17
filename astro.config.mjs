@@ -1,11 +1,12 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import { satteri } from "@astrojs/markdown-satteri";
-import { hastExternalLinks } from "./src/hast/external-links";
+import { hastExternalLinks } from "./src/plugins/hast/external-links";
 
 import sitemap from "@astrojs/sitemap";
 
 import icon from "astro-icon";
+import { satteriKatex } from "./src/plugins/latex/katex";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +14,8 @@ export default defineConfig({
   integrations: [sitemap(), icon()],
   markdown: {
     processor: satteri({
-      hastPlugins: [hastExternalLinks],
+      features: { math: true },
+      hastPlugins: [satteriKatex, hastExternalLinks],
     }),
   },
 });

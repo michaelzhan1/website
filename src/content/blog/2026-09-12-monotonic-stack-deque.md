@@ -64,8 +64,8 @@ problem.
 
 Essentially, this problem is a set of comparisons of next-greater and
 next-smaller to calculate the areas of pools of water. This can be done naively
-in O(n<sup>2</sup>), but reduces down to O(n) with a decreasing monotonic stack.
-For this particular problem, the stack tracks the next wall to the left of the
+in $O(n^2)$, but reduces down to $O(n)$ with a decreasing monotonic stack. For
+this particular problem, the stack tracks the next wall to the left of the
 current block. Popping an item from the stack represents completing the right
 wall of a hole, and the water's area can be added to the final answer. In
 essence, it uses the stack to sum up the rectangular areas of water.
@@ -100,13 +100,13 @@ classic example of this is
 [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/description/).
 
 In this problem, you are required to find the maximum of a k-size sliding window
-across the whole array. This can be done in O(n<sup>2</sup>) by brute force, but
-can be done in O(n) with an intuitive monotonic deque solution. The motivation
-for using a monotonic deque is that we can track the maximum in the current
-window in O(1) time, which we can achieve by keeping the maximum value of the
-window at the front of the deque (hence, monotonically decreasing). The key to
-adhering to the sliding window concept is that at each iteration, we also prune
-the front of the queue for any "expired" values.
+across the whole array. This can be done in $O(n^2)$ by brute force, but can be
+done in $O(n)$ with an intuitive monotonic deque solution. The motivation for
+using a monotonic deque is that we can track the maximum in the current window
+in $O(1)$ time, which we can achieve by keeping the maximum value of the window
+at the front of the deque (hence, monotonically decreasing). The key to adhering
+to the sliding window concept is that at each iteration, we also prune the front
+of the queue for any "expired" values.
 
 ```python
 def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
@@ -123,7 +123,7 @@ def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
     # prune out-of-window elements
     if i - dq[0] >= k:
       dq.popleft()
-    
+
     # incomplete window condition
     if i >= k - 1:
       res.append(nums[dq[0]])

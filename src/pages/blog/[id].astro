@@ -65,6 +65,10 @@ const { Content } = await render(post);
       gap: 1rem;
       margin-top: 1rem;
 
+      h2, h3, h4, h5, h6 {
+        margin-top: 0.75rem;
+      }
+
       pre {
         background: #f1f1f1;
         border: 1px solid #ddd;
@@ -97,6 +101,11 @@ const { Content } = await render(post);
       }
 
       p {
+        .katex {
+          color: #333;
+          font-size: 1rem;
+        }
+
         code {
           background: #d6d6d6;
           color: #222;
