@@ -7,13 +7,19 @@ import { formatDate } from "../../utils/common";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post) => ({
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return posts.map((post, index) => ({
     params: { id: post.id },
-    props: { post },
+    props: {
+      post,
+      previousPost: posts[index + 1],
+      nextPost: posts[index - 1],
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, previousPost, nextPost } = Astro.props;
 const { Content } = await render(post);
 ---
 
@@ -35,6 +41,22 @@ const { Content } = await render(post);
     <div class="blog__content">
       <Content />
     </div>
+    <nav class="blog__post-navigation" aria-label="Post navigation">
+      {previousPost && (
+        <a href={`/blog/${previousPost.id}`} rel="prev">
+          ← Prev: {previousPost.data.title}
+        </a>
+      )}
+      {nextPost && (
+        <a
+          class="blog__post-navigation-next"
+          href={`/blog/${nextPost.id}`}
+          rel="next"
+        >
+          Next: {nextPost.data.title} →
+        </a>
+      )}
+    </nav>
   </section>
 </BaseLayout>
 
@@ -193,6 +215,26 @@ const { Content } = await render(post);
         tbody tr:last-child td {
           border-bottom: none;
         }
+      }
+    }
+
+    .blog__post-navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+
+      a {
+        color: var(--color-text);
+
+        &:hover {
+          color: var(--color-text-hover);
+        }
+      }
+
+      .blog__post-navigation-next {
+        margin-left: auto;
+        text-align: right;
       }
     }
   }
